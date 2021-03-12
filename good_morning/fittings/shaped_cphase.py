@@ -64,7 +64,7 @@ def fit_phase(phases,amplitudes, even=True, plot=False):
 	freq = fit_result.params['freq_offset'].value
 
 
-	pt = (2*np.pi + phase)/freq
+	pt = (2*np.pi)/freq
 	print(pt)
 	idx = np.where((phases > pt-2.5) & (phases < pt + 2.5))[0]
 	detailed_fit  =  np.poly1d(np.polyfit(phases[idx], amplitudes[idx], 3))
@@ -117,8 +117,18 @@ if __name__ == '__main__':
     # data = ds('read4')
     # fit_phase(data.x(), data.y(), True, True)
 
-    ds = load_by_id(16949)
-    data = ds('read5')
+    # ds = load_by_id(16949)
+    # data = ds('read5')
+    # fit_phase(data.x(), data.y(), False, True)
+
+    # ds = load_by_id(17046)
+    # data = ds('read4')
+    # fit_phase(data.x(), data.y(), True, True)
+
+    ds = load_by_id(17063)
+    data = ds('read2')
     fit_phase(data.x(), data.y(), False, True)
+
+
 
     # plt.show()
